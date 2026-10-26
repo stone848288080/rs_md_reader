@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "md-reader-app",
+  "productName": "Markdown Reader",
   "version": "0.1.0",
-  "identifier": "com.h20.md-reader-app",
+  "identifier": "com.h20.markdown-reader",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -12,24 +12,51 @@
   "app": {
     "windows": [
       {
-        "title": "md-reader-app",
-        "width": 800,
-        "height": 600
+        "label": "main",
+        "title": "Markdown Reader",
+        "width": 900,
+        "height": 720,
+        "minWidth": 480,
+        "minHeight": 360,
+        "center": true,
+        "visible": false,
+        "backgroundColor": "#FFFFFF"
       }
     ],
     "security": {
-      "csp": null
+      "csp": "default-src 'self'; img-src 'self' asset: http://asset.localhost data: blob: https: http:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src ipc: http://ipc.localhost",
+      "devCsp": "default-src 'self'; img-src 'self' asset: http://asset.localhost data: blob: https: http:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src 'self' data:; connect-src ipc: http://ipc.localhost http://localhost:1420 http://127.0.0.1:1420 ws://localhost:1420 ws://127.0.0.1:1420",
+      "assetProtocol": {
+        "enable": true,
+        "scope": []
+      }
     }
   },
   "bundle": {
     "active": true,
     "targets": "all",
+    "category": "Productivity",
+    "shortDescription": "A minimal Markdown reader",
+    "longDescription": "A read-only desktop Markdown reader: open a .md file, read it in a clean single-column layout, and close it.",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
+    ],
+    "macOS": {
+      "minimumSystemVersion": "12.0"
+    },
+    "fileAssociations": [
+      {
+        "ext": ["md", "markdown"],
+        "name": "Markdown Document",
+        "description": "Markdown document",
+        "role": "Viewer",
+        "rank": "Default",
+        "mimeType": "text/markdown"
+      }
     ]
   }
 }
